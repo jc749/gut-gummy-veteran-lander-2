@@ -811,14 +811,15 @@
   }
   .pricing-toggle .save-pill {
     display: inline-block;
-    background: var(--burgundy);
-    color: white;
+    background: rgba(26, 61, 46, 0.12);
+    color: rgba(26, 61, 46, 0.55);
     font-size: 10px;
     font-weight: 700;
     padding: 2px 7px;
     border-radius: 999px;
     margin-left: 6px;
     letter-spacing: 0.05em;
+    transition: all 0.2s;
   }
   .pricing-toggle button.active .save-pill {
     background: white;
@@ -831,6 +832,11 @@
     margin: 8px 0 28px;
   }
   .price-tile { cursor: pointer; }
+  .price-tile:not(.selected) {
+    opacity: 0.55;
+    filter: saturate(0.7);
+  }
+  .price-tile:not(.selected):hover { opacity: 0.85; }
   .price-tile .pcompare {
     font-size: 12px;
     color: var(--charcoal);
@@ -1411,6 +1417,27 @@
     text-align: center;
   }
   .footer-bottom .disclaimer { font-style: italic; }
+  .legal-disclaimers {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .legal-fda {
+    border: 1px solid rgba(255,255,255,0.55);
+    padding: 22px 26px;
+    margin-bottom: 22px;
+  }
+  .legal-fda p { margin: 0; }
+  .legal-body p {
+    margin: 0 0 12px;
+  }
+  .legal-body p:last-child { margin-bottom: 0; }
+  @media (max-width: 600px) {
+    .legal-disclaimers { font-size: 13px; }
+    .legal-fda { padding: 18px 20px; }
+  }
 
   /* ============ RESPONSIVE ============ */
   @media (max-width: 900px) {
@@ -1773,8 +1800,6 @@
         <li>Gentle from Day 1, supported through Day 22</li>
         <li>Prebiotic + Probiotic + Postbiotic in one gummy</li>
       </ul>
-      <a href="#" class="nutrition-link">View nutrition label →</a>
-
       <div class="pricing-toggle" role="tablist" id="pricingToggle">
         <button type="button" data-mode="onetime">One-Time</button>
         <button type="button" class="active" data-mode="subscribe">Subscribe <span class="save-pill">Save up to 25%</span></button>
@@ -1811,7 +1836,7 @@
       <div class="trust-icons">
         <div class="trust-icon">30-Day<br>Guarantee</div>
         <div class="trust-icon">Sugar<br>Free</div>
-        <div class="trust-icon">RD<br>Formulated</div>
+        <div class="trust-icon">ND<br>Formulated</div>
         <div class="trust-icon">Free US<br>Shipping</div>
       </div>
 
@@ -1826,7 +1851,7 @@
       <details class="accordion-item">
         <summary>How to Use</summary>
         <div class="accordion-content">
-          <p>Each jar includes 60 individually portioned gummies (one full 30-day cycle). Take <strong>2 gummies daily</strong> with your morning routine — same time, every day, every phase. Consistency through the full cycle is when the hormonal gut rebuilds.</p>
+          <p>Each bottle contains 60 gummies (one full 30-day cycle). Take <strong>2 gummies daily</strong>, ideally in the morning so it becomes a consistent ritual. They can be taken with or without food, on an empty stomach or alongside a meal, whatever fits your routine. Consistency through the full cycle is when the hormonal gut rebuilds.</p>
         </div>
       </details>
     </div>
@@ -1966,11 +1991,11 @@
     </details>
     <details class="faq-item">
       <summary>Why should I eat The Gut Gummy each day?</summary>
-      <div class="faq-content">You're home to around 38 trillion microorganisms, more than the 30 trillion human cells in your body. This microscopic community, known as the microbiome, helps break down food and supports the production of key vitamins, neurotransmitters, and compounds that influence mood, metabolism, immune function, and the body's natural inflammatory balance. The Gut Gummy is a next-gen Full-Spectrum Tribiotic, combining clinically studied prebiotics, probiotics, and postbiotics to support a healthy microbiome and promote total-body wellness, from digestive comfort and metabolic balance to GLP-1 support, skin health, mood, and immune resilience.</div>
+      <div class="faq-content">You're home to around 38 trillion microorganisms, more than the 30 trillion human cells in your body. This microscopic community, known as the microbiome, helps break down food and supports the production of key vitamins, neurotransmitters, and compounds that influence mood, metabolism, immune function, and the body's natural inflammatory balance. The Gut Gummy is a next-gen Full-Spectrum Tribiotic, combining clinically studied prebiotics, probiotics, and postbiotics to support a healthy microbiome and promote total-body wellness, from digestive comfort and metabolic balance to GLP-1 support, skin health, mood, and immune resilience.*</div>
     </details>
     <details class="faq-item">
       <summary>What does The Gut Gummy do?</summary>
-      <div class="faq-content">The Gut Gummy is a full-spectrum tribiotic gummy that supports your gut and whole-body wellness through clinically studied prebiotics, probiotics, and postbiotics. It promotes digestive comfort, metabolic balance, immune resilience, and skin clarity, while also supporting mood, GLP-1 pathways, and energy from within. One of its key ingredients, the postbiotic BPL1® HT, has been clinically shown to help reduce belly and visceral fat and support healthy weight management in human studies (Pedret et al., 2019).</div>
+      <div class="faq-content">The Gut Gummy is a full-spectrum tribiotic gummy that supports your gut and whole-body wellness through clinically studied prebiotics, probiotics, and postbiotics. It promotes digestive comfort, metabolic balance, immune resilience, and skin clarity, while also supporting mood, GLP-1 pathways, and energy from within.* One of its key ingredients, the postbiotic BPL1® HT, has been clinically shown to help reduce belly and visceral fat and support healthy weight management in human studies* (Pedret et al., 2019).</div>
     </details>
     <details class="faq-item">
       <summary>How does The Gut Gummy uniquely increase microbiome diversity, and why is that so important?</summary>
@@ -1978,16 +2003,16 @@
         <p>Your gut is more than an organ. It's a living garden of trillions of microorganisms quietly shaping digestion, metabolism, mood, immunity, and energy. Modern life, stress, processed foods, and medications can deplete the microbial diversity your inner ecosystem needs to thrive.</p>
         <p><strong>The Gut Gummy nurtures your gut like a master gardener:</strong></p>
         <ul>
-          <li><strong>Clinically studied prebiotics</strong> (FOS, Inulin, IMOs, Tapioca Fiber, Pectin, Allulose) act like rich fertilizer, feeding a variety of beneficial bacteria to support a more vibrant, resilient, and diverse microbiome.</li>
-          <li><strong>DE111® probiotic</strong> delivers a resilient, beneficial strain that supports your gut's natural defenses and helps create an environment where more healthy microbes can flourish.</li>
-          <li><strong>BPL1® postbiotic</strong> helps nourish the internal environment of your gut, supporting microbial balance and a healthy inflammatory response.</li>
+          <li><strong>Clinically studied prebiotics</strong> (FOS, Inulin, IMOs, Tapioca Fiber, Pectin, Allulose) act like rich fertilizer, feeding a variety of beneficial bacteria to support a more vibrant, resilient, and diverse microbiome.*</li>
+          <li><strong>DE111® probiotic</strong> delivers a resilient, beneficial strain that supports your gut's natural defenses and helps create an environment where more healthy microbes can flourish.*</li>
+          <li><strong>BPL1® postbiotic</strong> helps nourish the internal environment of your gut, supporting microbial balance and a healthy inflammatory response.*</li>
         </ul>
         <p>The Gut Gummy is daily nourishment for your inner garden, helping you cultivate wellness from within, naturally.</p>
       </div>
     </details>
     <details class="faq-item">
       <summary>When will I feel something?</summary>
-      <div class="faq-content">Clinical research on DE111®, a key probiotic strain in The Gut Gummy, shows it begins supporting antioxidant activity, digestive function, and immune response within just 4 hours of consumption (Colom et al., 2023). Many people report reduced bloating and more regular digestion within the first few days of consistent use. With continued daily intake, longer-term benefits begin to take shape. In a human clinical trial, the postbiotic BPL1® HT was shown to significantly reduce visceral fat and waist circumference in adults with abdominal obesity (Pedret et al., 2019). Additional benefits may include support for appetite regulation through GLP-1 pathways, as well as improvements in mood, skin clarity, immune resilience, and athletic recovery.</div>
+      <div class="faq-content">Clinical research on DE111®, a key probiotic strain in The Gut Gummy, shows it begins supporting antioxidant activity, digestive function, and immune response within just 4 hours of consumption* (Colom et al., 2023). Many individuals report reduced bloating and more regular digestion within the first few days of consistent use. With continued daily intake, longer-term benefits begin to take shape. In a human clinical trial, the postbiotic BPL1® HT was shown to significantly reduce visceral fat and waist circumference in adults with abdominal obesity (Pedret et al., 2019). Additional benefits may include support for appetite regulation through GLP-1 pathways, as well as improvements in mood, skin clarity, immune resilience, and athletic recovery.*</div>
     </details>
     <details class="faq-item">
       <summary>Who should take The Gut Gummy?</summary>
@@ -2076,9 +2101,17 @@
       </ul>
     </div>
   </div>
+  <div class="legal-disclaimers">
+    <div class="legal-fda">
+      <p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    </div>
+    <div class="legal-body">
+      <p>Take The Gut Gummy™ along with a healthy diet and regular exercise program. Consult with a healthcare practitioner if pregnant or nursing. Keep out of reach of children.</p>
+      <p>†Results may vary. Timeframes based on clinical studies of individual ingredients.</p>
+    </div>
+  </div>
   <div class="footer-bottom">
-    © 2026 The Gut Gummy™ · All rights reserved<br>
-    <span class="disclaimer">These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</span>
+    © 2026 The Gut Gummy™ · All rights reserved
   </div>
 </footer>
 
